@@ -1,5 +1,5 @@
-<project name="lab009" default="jar">
-  <property name="version"	  value="1.0.4" />
+<project name="reverse_index" default="jar">
+  <property name="version"	  value="2.7.2" />
   <property name="bindir"	  value="${basedir}/class" />
   <property name="docdir"	  value="${basedir}/doc" />
   <property name="srcdir"	  value="${basedir}/src" />
