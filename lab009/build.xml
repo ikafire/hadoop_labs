@@ -4,7 +4,7 @@
   <property name="docdir"	  value="${basedir}/doc" />
   <property name="srcdir"	  value="${basedir}/src" />
   <property name="hadoop-home"	  value="${user.home}/hadoop" />
-  <property name="hadoop-libs"	  value="${hadoop-home}/lib" />
+  <property name="hadoop-libs"	  value="${hadoop-home}/share/hadoop" />
   <property name="hadoop-contrib" value="${hadoop-home}/contrib" />
   <property name="main-class"	  value="WordCount" />
   <property name="jarname"	  value="${main-class}.jar" />
@@ -14,11 +14,14 @@
     <javac debug="true" destdir="${bindir}">
       <src path="${srcdir}" />
       <classpath>
-        <fileset dir="${hadoop-libs}">
+        <fileset dir="${hadoop-libs}/common">
           <include name="*.jar" />
         </fileset>
-        <fileset dir="${hadoop-home}">
-          <include name="hadoop-*.jar" />
+        <fileset dir="${hadoop-libs}/common/lib">
+          <include name="commons-cli-1.2.jar" />
+        </fileset>
+        <fileset dir="${hadoop-libs}/mapreduce">
+          <include name="*.jar" />
         </fileset>
       </classpath>
     </javac>
@@ -28,11 +31,11 @@
     <mkdir dir="${docdir}" />
     <javadoc destdir="${docdir}">
       <classpath>
-        <fileset dir="${hadoop-libs}">
+        <fileset dir="${hadoop-libs}/common">
           <include name="*.jar" />
         </fileset>
-        <fileset dir="${hadoop-home}">
-          <include name="hadoop-*.jar" />
+        <fileset dir="${hadoop-libs}/mapreduce">
+          <include name="*.jar" />
         </fileset>
       </classpath>
       <fileset dir="${srcdir}" includes="**/*.java" />
